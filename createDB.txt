@@ -1,0 +1,18 @@
+CREATE SCHEMA IF NOT EXISTS surveyDB DEFAULT CHARACTER SET utf8 ;
+USE surveyDB ;
+CREATE TABLE IF NOT EXISTS surveyDB.user (
+name VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+password VARCHAR(45) NOT NULL,
+PRIMARY KEY (email)
+);
+CREATE TABLE IF NOT EXISTS surveyDB.result (
+email VARCHAR(45) NOT NULL,
+date DATETIME NOT NULL,
+score INT NOT NULL,
+questionOne VARCHAR(150) ,
+questionTwo VARCHAR(150) ,
+questionThree VARCHAR(150) ,
+PRIMARY KEY (email,date),
+FOREIGN KEY (email) REFERENCES user(email)
+);
